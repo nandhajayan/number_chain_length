@@ -33,14 +33,14 @@ public class NumberChainLengthCalc {
 	}
 
 	public int getAscendingOrder(String number) {
-		String i = number;
-		char n[] = i.toCharArray();
-		Arrays.sort(n);
-		String s = "";
-		for (int j = 0; j < n.length; j++) {
-			s = s + Character.toString(n[j]);
+		String input = number;
+		char arr[] = input.toCharArray();
+		Arrays.sort(arr);
+		String output = "";
+		for (int j = 0; j < arr.length; j++) {
+			output = output + Character.toString(arr[j]);
 		}
-		int ascending = Integer.parseInt(s);
+		int ascending = Integer.parseInt(output);
 		return ascending;
 	}
 	
