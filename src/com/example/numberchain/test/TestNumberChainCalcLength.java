@@ -12,12 +12,12 @@ public class TestNumberChainCalcLength {
 	
 	@Test
 	public void shouldReturnInputInDescendingOrder() {
-		assertEquals(97543, calculator.getDescendingOrder(43579));
+		assertEquals(97543, calculator.getDescendingOrder("43579"));
 	}
 
 	@Test
 	public void shouldReturnInputInAscendingOrder() {
-		assertEquals(123456789, calculator.getAscendingOrder(987654321));
+		assertEquals(123456789, calculator.getAscendingOrder("987654321"));
 	}
 	
 	@Test
@@ -27,6 +27,7 @@ public class TestNumberChainCalcLength {
 
 	@Test
 	public void shouldReturnNumberChainLength() {
-		assertEquals(4, calculator.createNumberChain(1234));
+		assertEquals(4, calculator.createNumberChain("1234"));
+		assertEquals(2, calculator.createNumberChain("444"));
 	}
 }

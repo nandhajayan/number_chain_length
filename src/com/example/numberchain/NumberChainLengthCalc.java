@@ -1,63 +1,49 @@
 package com.example.numberchain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.HashSet;
 
 public class NumberChainLengthCalc {
-	
-	public int createNumberChain(int input) {
-		int numberChainLength = 1;
-		List<Integer> inputArray = new ArrayList<>();
-		int descOrder = getDescendingOrder(input);
-		int ascOrder = getAscendingOrder(input);
-		while(true) {
-			int output = getSubtractedValue(descOrder, ascOrder);
-			descOrder = getDescendingOrder(output);
-			ascOrder = getAscendingOrder(output);
-			if(!inputArray.contains(output)) {
-				numberChainLength++;
-				inputArray.add(output);
-			}
-			else
-				break;
+
+	public int createNumberChain(String input) {
+		int difference = Integer.parseInt(input);
+		int numberChainLength = 0;
+		HashSet<Integer> h = new HashSet<Integer>();
+		for (int i = 0; i <= h.size(); i++) {
+			int descOrder = getDescendingOrder(Integer.toString(difference));
+			int ascOrder = getAscendingOrder(Integer.toString(difference));
+			difference = getSubtractedValue(descOrder, ascOrder);
+			h.add(difference);
+			numberChainLength++;
 		}
 		return numberChainLength;
-		
+
 	}
 
-	public int getDescendingOrder(int number) {
-		int sortedNumber = 0;
-		for (int i = 9; i >= 0; i--) {
-			int tmpNumber = number;
-			while (tmpNumber > 0) {
-				int digit = tmpNumber % 10;
-				if (digit == i) {
-					sortedNumber *= 10;
-					sortedNumber += digit;
-				}
-				tmpNumber /= 10;
-			}
+	public int getDescendingOrder(String number) {
+		String input = number;
+		char arr[] = input.toCharArray();
+		Arrays.sort(arr);
+		String output = "";
+		for (int j = arr.length - 1; j >= 0; j--) {
+			output = output + Character.toString(arr[j]);
 		}
-		return sortedNumber;
+		int descending = Integer.parseInt(output);
+		return descending;
 	}
 
-	public int getAscendingOrder(int number) {
-
-		int sortedNumber = 0;
-		for (int i = 0; i <= 9; i++) {
-			int tmpNumber = number;
-			while (tmpNumber > 0) {
-				int digit = tmpNumber % 10;
-				if (digit == i) {
-					sortedNumber *= 10;
-					sortedNumber += digit;
-				}
-				tmpNumber /= 10;
-			}
+	public int getAscendingOrder(String number) {
+		String i = number;
+		char n[] = i.toCharArray();
+		Arrays.sort(n);
+		String s = "";
+		for (int j = 0; j < n.length; j++) {
+			s = s + Character.toString(n[j]);
 		}
-		return sortedNumber;
+		int ascending = Integer.parseInt(s);
+		return ascending;
 	}
-
+	
 	public int getSubtractedValue(int descOrder, int ascOrder) {
 		return descOrder - ascOrder;
 	}
